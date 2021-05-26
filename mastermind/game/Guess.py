@@ -18,7 +18,7 @@ class Guess:
             self (Board): an instance of Board.
         """
         self._guess = guess
-        self._hint = make_hint(self, guess, number)
+        self._hint = self.make_hint(self, guess, number)
         self._number = number
 
     def get_guess(self):
