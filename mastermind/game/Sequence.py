@@ -17,7 +17,7 @@ class Sequence:
     def __init__(self):
 
         self.sequence_one = ""
-        self._generate()
+        self._generate() # calls the function to generate the sequence
 
     def _generate(self):
-        self.sequence_one = str(r.randint(1000, 9999))
+        self.sequence_one = str(r.randint(1000, 9999)) # Randomly generates a sequence for the player to guess

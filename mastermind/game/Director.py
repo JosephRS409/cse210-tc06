@@ -70,11 +70,12 @@ class Director:
         player = self._roster.get_current()
         self._console.write(f"{self._player.get_name()}'s turn:")
         
+        # Gets input from the user
         guess = self._console.read_number("Guess what the 4 digit number is! ")
-        self._guess._number = number
-        self._guess._guess = guess
-        self._guess.make_hint()
-        move = self._guess._guess
+        self._guess._number = number # sets the number in the guess class
+        self._guess._guess = guess # sets the guess in the guess class
+        self._guess.make_hint() # makes the hint for the player
+        move = self._guess._guess # sets the move to the guess
         self._player.set_move(move)
 
     def _do_updates(self):
@@ -91,10 +92,10 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        if int(self._player.get_move()) == int(self._sequence.sequence_one):
-            winner = self._roster.get_current()
+        if int(self._player.get_move()) == int(self._sequence.sequence_one): # Checks to see if the sequence and the guess are the same
+            winner = self._roster.get_current() #Gets the winners name
             name = winner
             print(f"\n{name} won!")
-            self._keep_playing = False
-        print(self._guess.get_hint())
-        self._roster.next_player()
+            self._keep_playing = False # ends the game
+        print(self._guess.get_hint()) # prints the hint for the players
+        self._roster.next_player() # goes to the next player.
