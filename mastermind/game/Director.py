@@ -67,7 +67,7 @@ class Director:
         number = self._sequence.sequence_one
 
         # get next player's move
-        player = self._roster.get_current()
+        self._player.name = self._roster.get_current()
         self._console.write(f"{self._player.get_name()}'s turn:")
         
         # Gets input from the user
@@ -97,5 +97,6 @@ class Director:
             name = winner
             print(f"\n{name} won!")
             self._keep_playing = False # ends the game
-        print(self._guess.get_hint()) # prints the hint for the players
-        self._roster.next_player() # goes to the next player.
+        else:
+            print(self._guess.get_hint()) # prints the hint for the players
+            self._roster.next_player() # goes to the next player.
