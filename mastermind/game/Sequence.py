@@ -7,7 +7,7 @@ class Sequence:
         Information Holder
 
     Attributes:
-        _piles (list): The number of piles of stones.
+        sequence_one: A randomly generated number
     """
     import random as r
 
