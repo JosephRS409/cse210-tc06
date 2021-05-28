@@ -1,4 +1,4 @@
-class Guess:
+class Guess():
     """A guess and corresponding hint in the game. The responsibility of Guess is to keep track of the guess and compare it to the actual
             number to create an appropriate hint.
     
@@ -11,15 +11,15 @@ class Guess:
         _current_player (str): The player who made the guess
         _number (str): The number that must be found
     """
-    def __init__(self, guess, number):
+    def __init__(self):
         """The class constructor.
         
         Args:
             self (Board): an instance of Board.
         """
-        self._guess = guess
-        self._hint = self.make_hint(self, guess, number)
-        self._number = number
+        self._guess = ""
+        self._number = ""
+        self._hint = ""
 
     def get_guess(self):
         """Returns the player's current guess.
@@ -37,7 +37,7 @@ class Guess:
         """
         return self._hint
 
-    def make_hint(self, guess, number):
+    def make_hint(self):
         """Returns the calculated guess according to the rules of Mastermind
 
         Args:
@@ -45,6 +45,8 @@ class Guess:
             guess (str): The players current guess
         """
         hint = ""
+        guess = self._guess
+        number = self._number
 
         # Convert parameters into string format
         if type(guess) != str:
@@ -60,4 +62,4 @@ class Guess:
             else:                       # If the number is incorrect.
                 hint += "*"
 
-        return hint
+        self._hint = hint
