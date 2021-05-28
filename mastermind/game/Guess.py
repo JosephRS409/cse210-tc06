@@ -54,12 +54,12 @@ class Guess():
         if type(number) != str:
             number = str(number)
         
-        for i in range(len(guess)):     # Adaptable if a number other than four digits is used
-            if guess[i] == number[i]:   # If the number is correct and in the right place.
+        for i in range(len(guess)):     # Adaptable if a character other than four digits is used
+            if guess[i].upper() == number[i]:   # If the character is correct and in the right place.
                 hint += "x"
-            elif guess[i] in number:    # If the number is correct but in the wrong place.
+            elif guess[i].upper() in number:    # If the character is correct but in the wrong place.
                 hint += "o"
-            else:                       # If the number is incorrect.
+            else:                       # If the character is incorrect.
                 hint += "*"
 
         self._hint = hint

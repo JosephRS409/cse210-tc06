@@ -43,7 +43,6 @@ class Director:
         self._prepare_game()
         while self._keep_playing:
             self._get_inputs()
-            self._do_updates()
             self._do_outputs()
 
     def _prepare_game(self):
@@ -52,6 +51,16 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        start_message = "\nWelcome to Mastermind!\n"
+        instructions = ("""Instructions: 
+        The players take turns guessing the secret code based on the hint that is offered.
+        An x means a correct number in a correct position. An o means a correct number in 
+        an incorrect position. An * means an incorrect number.\n""")
+
+        self._console.write(start_message)
+        self._console.write(instructions)
+        self._sequence._generate() # calls the function to generate the sequence
+
         for n in range(2):
             name = self._console.read(f"Enter a name for player {n + 1}: ")
             player = self._player.name = name
@@ -71,20 +80,12 @@ class Director:
         self._console.write(f"{self._player.get_name()}'s turn:")
         
         # Gets input from the user
-        guess = self._console.read_number("Guess what the 4 digit number is! ")
+        guess = self._console.read_number(f"Guess what the {self._sequence.get_num_length()} digit number is! ", self._sequence.get_num_length())
         self._guess._number = number # sets the number in the guess class
         self._guess._guess = guess # sets the guess in the guess class
         self._guess.make_hint() # makes the hint for the player
         player_guess = self._guess._guess # sets the move to the guess
         self._player.set_move(player_guess)
-
-    def _do_updates(self):
-        """Updates the important game information for each round of play. In 
-        this case, that means updating the board with the current move.
-        Args:
-            self (Director): An instance of Director.
-        """
-        player = self._roster.get_current()
 
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
@@ -92,7 +93,7 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        if int(self._player.get_move()) == int(self._sequence.sequence_one): # Checks to see if the sequence and the guess are the same
+        if str(self._player.get_move()).upper() == str(self._sequence.sequence_one): # Checks to see if the sequence and the guess are the same
             winner = self._roster.get_current() #Gets the winners name
             name = winner
             print(f"\n{name} won!")
