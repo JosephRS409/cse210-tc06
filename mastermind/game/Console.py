@@ -23,17 +23,25 @@ class Console:
         """
         return input(prompt)
 
-    def read_number(self, prompt):
-        """Gets numerical input from the user through the screen.
+    def read_number(self, prompt, num_length):
+        """Gets numerical input from the user through the screen. This is a failsafe to ensure the input is a "number".
 
         Args: 
             self (Screen): An instance of Screen.
             prompt (string): The prompt to display to the user.
 
         Returns:
-            integer: The user's input as an integer.
+            integer: The user's input as a number in a string.
         """
-        return int(input(prompt))
+        valid = False
+        while not valid:
+            guess = input(prompt)
+            if guess.isalnum() and len(guess) == num_length:       # if all the characters in the input are numbers then the loop breaks and returns the variable
+                valid = True
+            else:                       # otherwise it displays an error message and loops again.
+                print(f"{guess} is not a valid guess, please try again!")
+
+        return guess
         
     def write(self, text):
         """Displays the given text on the screen. 
