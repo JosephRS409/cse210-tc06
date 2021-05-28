@@ -14,8 +14,8 @@ class Roster:
         Args:
             self (Roster): an instance of Roster.
         """
-        self.current = -1
-        self.players = []
+        self.current = -1 # ? This offsets
+        self.players = [] # This is the list of players.
         
     def add_player(self, player):
         """Adds the given player to the roster
@@ -24,7 +24,7 @@ class Roster:
             self (Roster): An instance of Roster.
             player (Player): The player object to add.
         """
-        if player not in self.players:
+        if player not in self.players: # This adds "player"
             self.players.append(player)
 
     def get_current(self):
