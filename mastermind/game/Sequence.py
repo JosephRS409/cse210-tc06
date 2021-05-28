@@ -29,17 +29,18 @@ class Sequence:
         3 = A Healthy Amount
         4 = A Metric Crap Ton
         5 = Alpha-pocalypse\n>"""))
+        let_percent -= 1
 
-        if let_percent != 5:
+        if let_percent != 4:
             for _ in range(self._num_length):
                 letter = r.randint(0, let_percent)
-                if letter == 1:
+                if letter == 0:
                     num = r.randint(0, 9)
                     sequence = str(num) + sequence
                 else:
                     alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
                             "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Y", "Z"]
-                    num = alpha[r.randint(0, 26)-1]
+                    num = alpha[r.randint(0, 25)]
                     sequence = str(num) + sequence
 
         else:

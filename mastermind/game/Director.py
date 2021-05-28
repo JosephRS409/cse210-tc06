@@ -54,8 +54,8 @@ class Director:
         start_message = "\nWelcome to Mastermind!\n"
         instructions = ("""Instructions: 
         The players take turns guessing the secret code based on the hint that is offered.
-        An x means a correct number in a correct position. An o means a correct number in 
-        an incorrect position. An * means an incorrect number.\n""")
+        An x means a correct character in a correct position. An o means a correct character in 
+        an incorrect position. An * means an incorrect character.\n""")
 
         self._console.write(start_message)
         self._console.write(instructions)
@@ -80,7 +80,7 @@ class Director:
         self._console.write(f"{self._player.get_name()}'s turn:")
         
         # Gets input from the user
-        guess = self._console.read_number(f"Guess what the {self._sequence.get_num_length()} digit number is! ", self._sequence.get_num_length())
+        guess = self._console.read_number(f"Guess what the {self._sequence.get_num_length()} digit character is! ", self._sequence.get_num_length())
         self._guess._number = number # sets the number in the guess class
         self._guess._guess = guess # sets the guess in the guess class
         self._guess.make_hint() # makes the hint for the player
