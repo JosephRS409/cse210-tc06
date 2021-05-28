@@ -1,8 +1,8 @@
-from game.sequence import Sequence
-from game.console import Console
-from game.guess import Guess
-from game.player import Player
-from game.roster import Roster
+from game.Sequence import Sequence
+from game.Console import Console
+from game.Guess import Guess
+from game.Player import Player
+from game.Roster import Roster
 
 
 class Director:
@@ -26,10 +26,13 @@ class Director:
             self (Director): an instance of Director.
         """
         self._sequence = Sequence()
+        self._guess = Guess()
         self._console = Console()
+        self._player = Player()
         self._keep_playing = True
         self._move = None
         self._roster = Roster()
+        
 
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -51,7 +54,7 @@ class Director:
         """
         for n in range(2):
             name = self._console.read(f"Enter a name for player {n + 1}: ")
-            player = Player(name)
+            player = self._player.name = name
             self._roster.add_player(player)
 
     def _get_inputs(self):
@@ -60,15 +63,20 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        # display the game board
-        board = self._board.to_string()
-        self._console.write(board)
+        #sets the sequences for the players
+        number = self._sequence.sequence_one
+
         # get next player's move
-        player = self._roster.get_current()
-        self._console.write(f"{player.get_name()}'s turn:")
+        self._player.name = self._roster.get_current()
+        self._console.write(f"{self._player.get_name()}'s turn:")
         
-        move = Guess(guess, self._sequence.)
-        player.set_move(move)
+        # Gets input from the user
+        guess = self._console.read_number("Guess what the 4 digit number is! ")
+        self._guess._number = number # sets the number in the guess class
+        self._guess._guess = guess # sets the guess in the guess class
+        self._guess.make_hint() # makes the hint for the player
+        move = self._guess._guess # sets the move to the guess
+        self._player.set_move(move)
 
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
@@ -77,8 +85,6 @@ class Director:
             self (Director): An instance of Director.
         """
         player = self._roster.get_current()
-        move = player.get_move()
-        self._board.apply(move)
 
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
@@ -86,9 +92,11 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        if self._board.is_empty():
-            winner = self._roster.get_current()
-            name = winner.get_name()
+        if int(self._player.get_move()) == int(self._sequence.sequence_one): # Checks to see if the sequence and the guess are the same
+            winner = self._roster.get_current() #Gets the winners name
+            name = winner
             print(f"\n{name} won!")
-            self._keep_playing = False
-        self._roster.next_player()
+            self._keep_playing = False # ends the game
+        else:
+            print(self._guess.get_hint()) # prints the hint for the players
+            self._roster.next_player() # goes to the next player.
