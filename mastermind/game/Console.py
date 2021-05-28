@@ -33,9 +33,6 @@ class Console:
         Returns:
             integer: The user's input as a number in a string.
         """
-<<<<<<< HEAD
-        return int(input(prompt)) # Same as before, except with the user entering a number.
-=======
         valid = False
         while not valid:
             guess = input(prompt)
@@ -45,7 +42,6 @@ class Console:
                 print(f"{guess} is not a valid guess, please try again!")
 
         return guess
->>>>>>> master
         
     def write(self, text):
         """Displays the given text on the screen. 

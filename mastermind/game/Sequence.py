@@ -9,10 +9,6 @@ class Sequence:
     Attributes:
         sequence_one: A randomly generated number
     """
-    import random as r
-
-
-class Sequence:
 
     def __init__(self):
 
