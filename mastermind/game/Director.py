@@ -75,8 +75,8 @@ class Director:
         self._guess._number = number # sets the number in the guess class
         self._guess._guess = guess # sets the guess in the guess class
         self._guess.make_hint() # makes the hint for the player
-        move = self._guess._guess # sets the move to the guess
-        self._player.set_move(move)
+        player_guess = self._guess._guess # sets the move to the guess
+        self._player.set_move(player_guess)
 
     def _do_updates(self):
         """Updates the important game information for each round of play. In 

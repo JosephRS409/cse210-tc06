@@ -15,7 +15,7 @@ class Player:
             self (Player): an instance of Player.
         """
         self.name = ""
-        self.move = ""
+        self.guess = ""
         
     def get_move(self):
         """Returns the player's last move (an instance of Move). If the player 
@@ -24,7 +24,7 @@ class Player:
         Args:
             self (Player): an instance of Player.
         """
-        return self.move
+        return self.guess
 
     def get_name(self):
         """Returns the player's name.
@@ -34,11 +34,11 @@ class Player:
         """
         return self.name
 
-    def set_move(self, move):
+    def set_move(self, guess):
         """Sets the player's last move to the given instance of Move.
 
         Args:
             self (Player): an instance of Player.
             move (Move): an instance of Move
         """
-        self.move = move
+        self.guess = guess
