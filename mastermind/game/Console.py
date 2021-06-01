@@ -33,6 +33,7 @@ class Console:
         Returns:
             integer: The user's input as a number in a string.
         """
+        guess = ""
         valid = False
         while not valid:
             guess = input(prompt)
